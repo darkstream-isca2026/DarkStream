@@ -27,7 +27,7 @@ DSA_NUM_SINK = DSA_NUM_SOURCE
 WQ_NUM_SOURCE = 0
 WQ_NUM_SINK = 1
 
-# CPU core
+# CPU affinity settings
 CORE_SOURCE = 1
 CORE_SINK = 2
 
