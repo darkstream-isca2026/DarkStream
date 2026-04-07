@@ -42,7 +42,7 @@ Note that this data collection process takes approximately 38 hours to complete.
 #### How it works:
 **DSA-Offloaded Chromium Execution:** The script invokes `web_access_dsa.sh`, which utilizes the DTO library to offload Chromium's memory operations to the DSA.
 
-**Side-Channel Monitoring:** Simultaneously, the script launches a `sink` program to monitor and record the latency of memory operations caused by the target website's activities.
+**Side-Channel Monitoring:** Simultaneously, the script launches a `sink` program to monitor and record the latency of memory operations caused by the target website's activities for a duration of 7 seconds.
 
 #### Experimental Scope:
 The collection process covers two sets of data to ensure both depth and breadth:
