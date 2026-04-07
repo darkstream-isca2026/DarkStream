@@ -1,8 +1,4 @@
-<div align=center>
-
 # DarkStream: Exploiting Internal Throughput Contention in Data Streaming Accelerator for Timing Attacks
-
-</div>
 
 This repository holds the artifact for the ISCA 2026 paper: "DarkStream: Exploiting Internal Throughput Contention in Data Streaming Accelerator for Timing Attacks".
 
