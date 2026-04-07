@@ -37,6 +37,7 @@ Execute the following script to begin collecting side-channel traces from websit
 make
 python3 collect.py
 ```
+Note that this data collection process takes approximately 38 hours to complete.
 
 #### How it works:
 **DSA-Offloaded Chromium Execution:** The script invokes `web_access_dsa.sh`, which utilizes the DTO library to offload Chromium's memory operations to the DSA.
