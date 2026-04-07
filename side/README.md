@@ -1,4 +1,4 @@
-## Side-channel
+## Website Fingerprinting Side-Channel
 
 ### 1. **Install Playwright and Chromium.**
 Execute the following command to install Playwright (v1.54.0) and the corresponding Chromium browser:
