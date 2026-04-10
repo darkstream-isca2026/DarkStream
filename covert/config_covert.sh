@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ "$EUID" -ne 0 ]; then
+  echo "Error: Please run this script with sudo or as root."
+  exit 1
+fi
+
 for GOVERNOR in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
     if [ -f "$GOVERNOR" ]; then
         CORE=$(echo "$GOVERNOR" | cut -d'/' -f6)
@@ -10,10 +15,22 @@ for GOVERNOR in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
     fi
 done
 
-if [ "$EUID" -ne 0 ]; then
-  echo "Error: Please run this script with sudo or as root."
-  exit 1
-fi
+for CPU_DIR in /sys/devices/system/cpu/cpu[0-9]*; do
+    CORE=$(basename "$CPU_DIR")
+    for STATE_DIR in "$CPU_DIR"/cpuidle/state[0-9]*; do
+        if [ -d "$STATE_DIR" ]; then
+            STATE_NAME=$(cat "$STATE_DIR/name")
+            DISABLE_FILE="$STATE_DIR/disable"
+            
+            if [ -f "$DISABLE_FILE" ]; then
+                echo 1 > "$DISABLE_FILE"
+                
+                RESULT=$(cat "$DISABLE_FILE")
+                echo "$CORE - $STATE_NAME: $([ "$RESULT" -eq 1 ] && echo "Disabled" || echo "Failed")"
+            fi
+        fi
+    done
+done
 
 TARGET_USER=$1
 
