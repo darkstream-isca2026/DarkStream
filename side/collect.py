@@ -99,8 +99,8 @@ def main():
                 stderr=subprocess.DEVNULL,
             )
             sink_proc.wait()
-            web_proc.terminate()
-            time.sleep(1)
+            web_proc.wait()
+            time.sleep(0.5)
 
 if __name__ == "__main__":
     main()
